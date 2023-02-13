@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 // TODO: implement websocket
 // TODO: move apidoc to separate files
@@ -13,16 +13,16 @@ const router = express.Router();
  * @apiSuccess {String} message Ok
  */
 router.get('/healthcheck', (req, res) => {
-  res.status(200).send({message: 'Ok'})
+  res.status(200).send({ message: 'Ok' })
 })
 
 /**
  * @api {post} api/register Request for registering new account
  * @apiName Register
  * @apiGroup Account
- * 
+ *
  * @apiParam {String} phone_number User's phone number
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
@@ -34,17 +34,16 @@ router.get('/healthcheck', (req, res) => {
  *
  * @apiSuccess {String} token Token for activation
  */
-router.post('/accounts/register', ()=>{})
-
+router.post('/accounts/register', () => {})
 
 /**
  * @api {post} api/activation Request for registering new account
  * @apiName Register
  * @apiGroup Account
- * 
+ *
  * @apiParam {String} token Token use token that received from api/register
  * @apiParam {String} otp   OTP
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
@@ -56,21 +55,21 @@ router.post('/accounts/register', ()=>{})
  *
  * @apiSuccess {String} token Token for activation
  */
-router.post('/accounts/activation', ()=>{})
+router.post('/accounts/activation', () => {})
 
 /**
  * @api {get} api/chats Request for list chats
  * @apiName List Chat
  * @apiGroup Chats
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
  *     "message": "Ok",
  *     "data": [
- *        { 
+ *        {
  *          "id": uid,
- *          "name": name, 
+ *          "name": name,
  *          "mute": true,
  *          "last_update": '',
  *          "chat_picture": '',
@@ -91,21 +90,21 @@ router.post('/accounts/activation', ()=>{})
  * @apiSuccess {String} chat_picture image URL
  * @apiSuccess {String} read Booelan
  */
-router.get('/chats', ()=>{})
+router.get('/chats', () => {})
 
 /**
  * @api {post} api/chats Request for creating new chat
  * @apiName List Chat
  * @apiGroup Chats
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
  *     "message": "Ok",
  *     "data": [
- *        { 
+ *        {
  *          "id": uid,
- *          "name": name, 
+ *          "name": name,
  *          "mute": true,
  *          "last_update": '',
  *          "chat_picture": '',
@@ -134,18 +133,18 @@ router.post('/chats', () => {})
  * @api {post} api/chats Request for creating new chat
  * @apiName Create New Chat
  * @apiGroup Chats
- * 
+ *
  * @apiParam {String} phone_numbers Array of phone_number
  * @apiParam {String} type Value: personal, group
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
  *     "message": "Ok",
  *     "data":
- *       { 
+ *       {
  *          "id": uid,
- *          "name": name, 
+ *          "name": name,
  *          "mute": true,
  *          "last_update": '',
  *          "chat_picture": '',
@@ -157,7 +156,7 @@ router.post('/chats', () => {})
  *              "name":,
  *              "picture"
  *            }
- *          ] 
+ *          ]
  *        }
  *   }
  *
@@ -170,36 +169,36 @@ router.post('/chats', () => {})
  * @apiSuccess {String} type Value: personal, group
  * @apiSuccess {String} member array of user
  */
-router.get('/chats/:id', ()=> {})
+router.get('/chats/:id', () => {})
 
 /**
  * @api {delete} api/chats/:id Request for deleting new chat
  * @apiName Delete Chat
  * @apiGroup Chats
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
  *     "message": "Ok"
  */
-router.delete('/chats/:id', ()=> {})
+router.delete('/chats/:id', () => {})
 
 /**
  * @api {put} api/chats/:id Request for editing chat
  * @apiName Update chat
  * @apiGroup Chats
- * 
+ *
  * @apiParam {String} picture Image Path
  * @apiParam {String} name Chat Name
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
  *     "message": "Ok"
   *     "data":
- *       { 
+ *       {
  *          "id": uid,
- *          "name": name, 
+ *          "name": name,
  *          "mute": true,
  *          "last_update": '',
  *          "chat_picture": '',
@@ -211,20 +210,20 @@ router.delete('/chats/:id', ()=> {})
  *              "name":,
  *              "picture"
  *            }
- *          ] 
+ *          ]
  *       }
  *   }
  *   }
  */
-router.put('/chats/:id', ()=> {})
+router.put('/chats/:id', () => {})
 
 /**
  * @api {get} api/chats/:id/conversation Request for list conversations
  * @apiName List conversations
  * @apiGroup Conversations
- * 
+ *
  * @apiParam {String} id Chat ID
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
@@ -260,11 +259,11 @@ router.get('/chats/:id/conversations', () => {})
  * @api {post} api/chats/:id/conversations Request for creating conversation
  * @apiName Create new conversation
  * @apiGroup Conversations
- * 
+ *
  * @apiParam {String} id Chat ID
  * @apiParam {String} message conversation message
  * @apiParam {String} image Image Path
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
@@ -295,7 +294,7 @@ router.post('/chats/:id/conversations', () => {})
  * @api {delete} api/chats/:id/conversations/:id Request for deleting conversation
  * @apiName Delete Conversation
  * @apiGroup Conversations
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
@@ -303,16 +302,15 @@ router.post('/chats/:id/conversations', () => {})
  */
 router.delete('/chats/:id/conversations/:id', () => {})
 
-
 // for staging or dev only
 /**
  * @api {get} api/otp/:phone_number Request for get OTP only for staging
  * @apiName OTP
  * @apiGroup Account
- * 
+ *
  * @apiParam {String} token Token use token that received from api/register
  * @apiParam {String} otp   OTP
- * 
+ *
  * @apiSuccessExample Success-Response:
  *   HTTP/1.1 200 OK
  *   {
@@ -324,8 +322,8 @@ router.delete('/chats/:id/conversations/:id', () => {})
  *
  * @apiSuccess {String} token Token for activation
  */
-if (process.env.NODE_ENV != 'production') {
+if (process.env.NODE_ENV !== 'production') {
   router.get('/accounts/otp/:phone_number', () => {})
 }
 
-module.exports = router;
+module.exports = router
