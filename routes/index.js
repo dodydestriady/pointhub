@@ -3,6 +3,7 @@ const req = require('express/lib/request');
 const router = express.Router();
 
 // TODO: implement websocket
+// TODO: move apidoc to separate files
 
 /**
  * @api {get} api/healtcheck Request status server
